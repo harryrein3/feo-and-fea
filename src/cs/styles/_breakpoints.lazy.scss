@@ -1,0 +1,55 @@
+/*
+  Use these mixins to adapt the styling for various screen sizes.
+
+  In general, we want to develop for mobile phones, and adjust the styling
+  upwards as we scale to larger screens. This keeps us in the mobile first
+  mentality, a more common practice than the desktop first approach.
+
+  Example:
+    .container {
+        background: red;    
+        @include sm { background: orange; }
+        @include md { background: yellow; }
+        @include lg { background: green; }
+        @include xl { background: blue; }
+    }
+
+  *** We recommend to start by designing for mobile, then copy pasting the above into the 
+  container to help yourself debug and craft the experience for larger screen sizes.
+*/
+
+$screen-sm-min: 576px; // Small tablets and large smartphones (landscape view)
+$screen-md-min: 768px; // Small tablets (portrait view)
+$screen-lg-min: 992px; // Tablets and small desktops
+$screen-xl-min: 1200px; // Large tablets and desktops
+
+// Small devices
+@mixin sm {
+   @media (min-width: #{$screen-sm-min}) {
+       @content;
+   }
+}
+
+@mixin md {
+   @media (min-width: #{$screen-md-min}) {
+       @content;
+   }
+}
+
+@mixin lg {
+   @media (min-width: #{$screen-lg-min}) {
+       @content;
+   }
+}
+
+@mixin xl {
+   @media (min-width: #{$screen-xl-min}) {
+       @content;
+   }
+}
+
+@mixin custom_breakpoint($screen) {
+   @media (min-width: $screen+'px') {
+       @content;
+   }
+}

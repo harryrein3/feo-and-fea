@@ -1,0 +1,37 @@
+/*
+	This file is used to pull together all the partials (files starting with _)
+	for use across all the components. These partials consist of SASS elements 
+	such as:
+
+		1) Variables. 
+			For example 
+				$primary: #ff1791;
+			To use:
+				.box { color: $primary; }
+
+		2) Mixins.
+			For example 
+				@mixin transform($property) {
+				  -webkit-transform: $property;
+				  -ms-transform: $property;
+				  transform: $property;
+				}
+			To use
+				.box { @include transform(rotate(30deg)); }
+
+	Please note that the order does matter, as some files depend on others.
+
+	For a general guide, see https://sass-lang.com/guide
+*/
+// Independent files
+@import 'colors.lazy';
+@import 'constants.lazy';
+@import 'fonts.lazy';
+@import 'grid.lazy';
+@import 'shadows.lazy';
+@import 'breakpoints.lazy';
+
+// Dependent files
+@import 'borders.lazy';
+@import 'buttons.lazy';
+@import 'inputs.lazy';

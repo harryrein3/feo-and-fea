@@ -1,0 +1,11 @@
+%input-shared {
+	@extend %flex-center;
+	border-radius: 4px;
+  font-size: $font-size-m;
+  color: $dark;
+  padding: 14px 16px;
+  background-color: $offwhite;
+  border-style: solid;
+  border: none;
+  outline: none;
+}

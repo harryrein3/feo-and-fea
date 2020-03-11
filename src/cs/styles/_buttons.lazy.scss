@@ -1,0 +1,54 @@
+%btn-shared {
+	@extend %flex-center;
+	border-radius: 4px;
+	cursor: pointer;
+  font-weight: bold;
+  text-decoration: none;
+  &:hover {
+  	opacity: 0.85;
+  }
+}
+
+%btn-inactive {
+  cursor: default;
+  &:hover {
+    opacity: 1;
+  }
+}
+
+%btn-offwhite {
+  @extend %btn-shared;
+  background-color: $offwhite;
+  color: $dark;
+}
+
+%btn-light {
+  @extend %btn-shared;
+  background-color: $light;
+  color: $white;
+}
+
+%btn-lighter {
+  @extend %btn-shared;
+  background-color: $lighter;
+  color: $dark;
+}
+
+%btn-primary {
+  @extend %btn-shared;
+  background-color: $primary;
+  color: $white;
+}
+
+%btn-primary-inverted {
+  @extend %btn-shared;
+  background-color: $white;
+  color: $primary;
+}
+
+%btn-secondary {
+  @extend %btn-shared;
+  background-color: $secondary;
+  color: $primary;
+  border: 1px solid $white;
+}

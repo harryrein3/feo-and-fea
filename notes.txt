@@ -1,0 +1,17 @@
+Other extensions and their permissions:
+
+Toby:
+   "permissions": [ "identity", "contextMenus", "unlimitedStorage", "storage", "tabs", "https://*/", "http://*/" ],
+
+Honey:
+    "permissions": [ "cookies", "storage", "unlimitedStorage", "webRequest", "webRequestBlocking", "http://*/*", "https://*/*" ],
+
+Wikibuy:
+   "permissions": [ "tabs", "contextMenus", "storage", "cookies", "idle", "webRequest", "webRequestBlocking", "http://*/", "https://*/", "<all_urls>" ],
+
+Rakuten:
+    "permissions": [ "tabs", "webNavigation", "webRequest", "storage", "<all_urls>", "cookies" ],
+
+Grammarly:
+   "optional_permissions": [ "clipboardRead" ],
+   "permissions": [ "<all_urls>", "tabs", "notifications", "cookies", "system.cpu", "clipboardWrite", "storage" ],

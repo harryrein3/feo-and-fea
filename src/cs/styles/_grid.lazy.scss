@@ -1,0 +1,73 @@
+$max-popup-width: 800px;
+
+%flex-row {
+  display: flex;
+  flex-direction: row;
+}
+
+%flex-col {
+  display: flex;
+  flex-direction: column;
+}
+
+%flex-row-middle {
+	@extend %flex-row;
+  align-items: center;
+}
+
+%flex-row-end {
+	@extend %flex-row;
+  align-items: flex-end;
+}
+
+%flex-col-middle {
+	@extend %flex-col;
+  justify-content: center;
+}
+
+%flex-col-start {
+	@extend %flex-col;
+  align-items: flex-start;
+}
+
+%flex-col-center {
+	@extend %flex-col;
+  align-items: center;
+}
+
+%flex-col-spread {
+	@extend %flex-col;
+  align-items: stretch;
+}
+
+%flex-row-center {
+	@extend %flex-row;
+  justify-content: center;
+}
+
+%flex-row-spread {
+	@extend %flex-row;
+  justify-content: space-between;
+}
+
+%flex-row-middle-spread {
+	@extend %flex-row-middle;
+  justify-content: space-between;
+}
+
+%flex-center {
+	@extend %flex-row;
+	justify-content: center;
+	align-items: center;
+}
+
+%flex-center-vertical {
+	@extend %flex-col;
+	justify-content: center;
+	align-items: center;
+}
+
+%flex-stretch {
+	@extend %flex-row;
+	align-items: stretch;
+}

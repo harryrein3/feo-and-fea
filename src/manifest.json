@@ -1,0 +1,54 @@
+{
+  "name": "Feo and Fea",
+  "key": "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAkTnUVRUtiBMP2U5rf0z1E2eq4zVcDHAKdxLuumgQJjPweOyVGAhKOBjVqvmaRv2sm8FqZVktyBGbK5CDsNk6asG2fBK/+7/U7pGO6P2YTF8ry5GZaf3rIsQc/LOPVLEbVtjc3BiDUSbkLjCdIBoypJMvb4yUWMcbajiba7pOFpDTVkohk2UqpQQXdHzocxh9N2HzgbW9fpPDPRdjNvtfuPh8zXhsvKszOdJBuwHVHtlW96UwzIgKEBjEU3Qt4KLHPezhg/BzcSh8HdkXlGvUrs5En7yPEFSf1P+LpGkDSac/dftTs4zldbl8q1TMXLWcOl2osik2kFPvcu+sUVPCZwIDAQAB",
+  "version": "1.0.0",
+  "description": "The organic way to learn a new language.",
+  "permissions": [
+    "tabs",
+    "cookies",
+    "storage",
+    "webRequest",
+    "webRequestBlocking",
+    "http://*/*", 
+    "https://*/*"
+  ],
+  "background": {
+    "page": "background.html",
+    "persistent": true
+  },
+  "content_security_policy": "script-src 'self' https://*.facebook.net/ 'unsafe-eval'; object-src 'self'",
+  "browser_action": {
+    "default_icon": {
+      "16": "images/basset@16.png",
+      "32": "images/basset@32.png",
+      "48": "images/basset@48.png",
+      "128": "images/basset@128.png"
+    }
+  },
+  "content_scripts": [
+    {
+      "js": [
+        "contentScript.bundle.js"
+      ],
+      "run_at": "document_start",
+      "match_about_blank": false,
+      "all_frames": false,
+      "matches": [
+        "http://*/*", 
+        "https://*/*"
+      ]
+    }
+  ],
+  "icons": {
+    "16": "images/basset@16.png",
+    "32": "images/basset@32.png",
+    "48": "images/basset@48.png",
+    "128": "images/basset@128.png"
+  },
+  "web_accessible_resources": [
+    "images/*.png"
+  ],
+  "environment": "staging",
+  "manifest_version": 2
+}
+
