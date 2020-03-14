@@ -1,21 +1,23 @@
+/*
+  These are the libraries that are bundled together from the 
+  package.json folder, they are all external libraries we are
+  using to make our job earier.
+*/
 import _ from 'lodash'
 import $ from 'jquery'
 import ReactDOM from 'react-dom'
 import App from './App'
 
-chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
-  console.log('Got a message from the backend')
-  const { type, translation, raw_input } = request
-  switch(type) {
-    case 'TRANSLATION_COMPLETE':
-      console.log(raw_input, 'translates to', translation)
-      break;
-    default:
-      break;
-  }
-})
+/*
+  We will use these global variables to pass between functions.
+*/
+let selectedText = null 
+let selectedContainerElement = null 
 
-
+/*
+  Waiting for a highlight event and sending the label to the background
+  thread to be translated.
+*/
 const initializeHighlightListener = () => {
   document.addEventListener("mouseup",event=>{
     let selection = document.getSelection ? document.getSelection().toString() :  document.selection.createRange().toString();
@@ -27,21 +29,43 @@ const initializeHighlightListener = () => {
     const selectionIsValid = feaSaysSo && selection.length > 0
 
     if (selectionIsValid) {
+      selectedText = selection
+      selectedContainerElement = event.target
       chrome.runtime.sendMessage({event: 'TRANSLATE_TEXT', data: {selection}})
+    } else {
+      selectedText = null
+      selectedContainerElement = null
     }
   })
 }
 
+/*
+  Getting the translation response from the background thread
+*/
+chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
+  const { type, translation, raw_input } = request
+  console.log(request)
+  switch(type) {
+    case 'TRANSLATION_COMPLETE':
+      labelTranslation(translation, raw_input)
+      break;
+    default:
+      break;
+  }
+})
+
+/*
+  Set up the UI to show the label for the translation
+*/
 const labelTranslation = resp => {
   // Here we need to find the highlighted text and add a component hovering above it with the translation of the text.
   const { translation, success } = resp;
 
-  console.warn('Need to label translation', resp)
+  console.warn('Got a translation', translation)
 
   // const rootElement = document.createElement('div')
-  // rootElement.classList.add('feo-and-fea-on-page-container')
   // document.body.append(rootElement)
-  // reactApp = ReactDOM.render(<App/>, rootElement);
+  // const reactApp = ReactDOM.render(<App/>, selectedContainerElement);
 }
 
 
@@ -49,3 +73,5 @@ const labelTranslation = resp => {
 $(document).ready(function(){
   initializeHighlightListener()
 })
+
+

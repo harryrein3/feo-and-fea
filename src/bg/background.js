@@ -4,12 +4,12 @@
 import $ from 'jquery'
 import _ from 'lodash'
 
-const GOOGLE_TRANSLATE_TOKEN = 'ya29.c.Ko8BwQcc0V0Ab5DkEAITE-vJ4BCOaM3lsHNbtNVWu3ihCbrMpvC_R0WGYuK3LuXUVqOfCGNOnAPszR91lIh3-tvSUNgKFjWi0l-UwxAfMGMN-2qQt6BiFSXIWl68ZhEbEQbNIhiu-4o9jRB0D1ozWGYKWmaXJXnfFU17a_bvQiHhCtf0pJN2r6dy7GTG_83AtiQ'
-
 import '../../images/icons/basset@16.png'
 import '../../images/icons/basset@32.png'
 import '../../images/icons/basset@48.png'
 import '../../images/icons/basset@128.png'
+
+const GOOGLE_TRANSLATE_TOKEN = 'ya29.c.Ko8BwgcIALuIAgZKkuSp1juMD2UtLvctar0O8AVR2mUMowFlMtun5XtclPi-yaQkMDKzxOHyAYhtFk9PeSarX3XuX9I7xSfCFqw6eGH920jTl48k-Zg_GBCdAKAI5e7yXo5tgnelrfQ6dNGp7kK6yxQ4aCeAlO2D9G7kGbKM6HULssDvnTKGCJ9HiFwnguUPJ58'
 
 chrome.runtime.onMessage.addListener(async (request, sender, sendResponse) => {
   const { event, data } = request;
@@ -25,8 +25,8 @@ chrome.runtime.onMessage.addListener(async (request, sender, sendResponse) => {
         method: 'POST',
         data: JSON.stringify({
           q: selection,
-          source: 'en',
-          target: 'es',
+          source: 'es',
+          target: 'en',
           format: 'text'
         }),
         success: data => {
