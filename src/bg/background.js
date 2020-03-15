@@ -14,13 +14,11 @@ import spanishBasset32 from '../../images/icons/spanishBasset@32.png'
 import spanishBasset48 from '../../images/icons/spanishBasset@48.png'
 import spanishBasset128 from '../../images/icons/spanishBasset@128.png'
 
-
-const GOOGLE_TRANSLATE_TOKEN = 'ya29.c.Ko8Bwgf080dRwxsT5Qvpu-T5hFThWtT0snx_0KbOBu53-W4mNYcTZeD1dnp47Ao0LGBukaY1UvDaZPRZzIg60j-TcyHcP7eo3b_5UixKPH9gdIxz2H_JleqVaycLNqG2jE30MaQcrk5pAOx3E9KVBVBFe08wJG-rrbmmgOEblv-SMQ7aJhJuubZ8NAfE0DQNka8'
+const GOOGLE_TRANSLATE_TOKEN = 'ya29.c.Ko8BwgebPgrI0UzrU_j3958ebEsMlzHVAf1G_fgTEkhSarOKt3PGja8n_JcEDVF5ZzH8-D1l97rNKnv1Nx9jIK6EnRS6796tv_fjFVam4XrqAoPeMFwJDrDVX6KpL3-kVa41YvIzzs3XKabt--rDqyOoJWst2HJUUEkIkzZDFdN8ogniUikfkjBPJm9uUh18siE'
 
 let isSpanish = false
 chrome.browserAction.onClicked.addListener((tab) => { 
   isSpanish = !isSpanish      
-
   chrome.tabs.getSelected(tab => { // deprecated, eventually remove
     chrome.browserAction.setIcon({path: {
       "16": isSpanish ? spanishBasset16 : basset16,
@@ -30,9 +28,7 @@ chrome.browserAction.onClicked.addListener((tab) => {
     }, tabId: tab.tabId})
 
   })
-
 });
-
 
 chrome.runtime.onMessage.addListener(async (request, sender, sendResponse) => {
   const { event, data } = request;
