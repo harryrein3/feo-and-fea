@@ -28,6 +28,8 @@ const initializeHighlightListener = () => {
     const feaSaysSo = true
     const selectionIsValid = feaSaysSo && selection.length > 0
 
+
+
     if (selectionIsValid) {
       selectedText = selection
       selectedContainerElement = event.target
