@@ -28,8 +28,6 @@ const initializeHighlightListener = () => {
     const feaSaysSo = true
     const selectionIsValid = feaSaysSo && selection.length > 0
 
-
-
     if (selectionIsValid) {
       selectedText = selection
       selectedContainerElement = event.target
@@ -46,7 +44,6 @@ const initializeHighlightListener = () => {
 */
 chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
   const { type, translation, raw_input } = request
-  console.log(request)
   switch(type) {
     case 'TRANSLATION_COMPLETE':
       labelTranslation(translation, raw_input)
@@ -59,18 +56,13 @@ chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
 /*
   Set up the UI to show the label for the translation
 */
-const labelTranslation = resp => {
+const labelTranslation = (translation, raw_input) => {
   // Here we need to find the highlighted text and add a component hovering above it with the translation of the text.
-  const { translation, success } = resp;
-
-  console.warn('Got a translation', translation)
-
-  // const rootElement = document.createElement('div')
-  // document.body.append(rootElement)
-  // const reactApp = ReactDOM.render(<App/>, selectedContainerElement);
+  console.log('Got a translation', translation, raw_input)
+  const rootElement = document.createElement('div')
+  document.body.append(rootElement)
+  const reactApp = ReactDOM.render(<App/>, 'body');
 }
-
-
 
 $(document).ready(function(){
   initializeHighlightListener()
