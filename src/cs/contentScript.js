@@ -7,6 +7,7 @@ import _ from 'lodash'
 import $ from 'jquery'
 import ReactDOM from 'react-dom'
 import App from './App'
+import React from 'react'
 
 /*
   We will use these global variables to pass between functions.
@@ -61,7 +62,7 @@ const labelTranslation = (translation, raw_input) => {
   console.log('Got a translation', translation, raw_input)
   const rootElement = document.createElement('div')
   document.body.append(rootElement)
-  const reactApp = ReactDOM.render(<App/>, 'body');
+  const reactApp = ReactDOM.render(<App/>, rootElement);
 }
 
 $(document).ready(function(){
