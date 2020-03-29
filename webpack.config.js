@@ -39,10 +39,10 @@ var options = {
             loader: 'style-loader', 
             options: {
               injectType: 'lazyStyleTag',
-              insert: function (element) {
-                const shadow = document.querySelector('.popcart-on-page-container-shadow').shadowRoot;
-                shadow.appendChild(element)
-              }
+               insert: function (element) {
+                 const style = document.querySelector('.travis-jr-root-container');
+                 style.appendChild(element)
+               }
             } 
           },
           'css-loader',

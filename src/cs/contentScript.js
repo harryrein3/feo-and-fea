@@ -5,6 +5,7 @@
 */
 import _ from 'lodash'
 import $ from 'jquery'
+import React from 'react'
 import ReactDOM from 'react-dom'
 import App from './App'
 import React from 'react'
@@ -44,10 +45,11 @@ const initializeHighlightListener = () => {
   Getting the translation response from the background thread
 */
 chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
-  const { type, translation, raw_input } = request
+  const { type, translation, raw_input, error } = request
   switch(type) {
     case 'TRANSLATION_COMPLETE':
-      labelTranslation(translation, raw_input)
+      console.log('Translation complete', request)
+      labelTranslation(translation, raw_input, error)
       break;
     default:
       break;
@@ -57,12 +59,26 @@ chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
 /*
   Set up the UI to show the label for the translation
 */
-const labelTranslation = (translation, raw_input) => {
+let reactApp= null
+const labelTranslation = (translation, raw_input, error) => {
   // Here we need to find the highlighted text and add a component hovering above it with the translation of the text.
+<<<<<<< HEAD
   console.log('Got a translation', translation, raw_input)
   const rootElement = document.createElement('div')
   document.body.append(rootElement)
   const reactApp = ReactDOM.render(<App/>, rootElement);
+=======
+  const data = { translation, raw_input, error, visible: !reactApp }
+  if (!reactApp) {
+      const rootElement = document.createElement('div')
+      rootElement.classList.add('travis-jr-root-container')
+      const prevElement = document.querySelector('.travis-jr-root-container')
+      document.body.append(rootElement)
+      reactApp = ReactDOM.render(<App initialData={data}/>, rootElement);
+  } else {
+    reactApp.setData(data)
+  }
+>>>>>>> On page v1
 }
 
 $(document).ready(function(){
