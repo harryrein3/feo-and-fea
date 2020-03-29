@@ -12,6 +12,9 @@ class App extends React.Component {
 
   setData = data => {
     this.setState({...data})
+    if (!this.state.visible) {
+        this.setState({visible: true})
+    }
   }
 
   // These state elements are passed down through the contentScript.

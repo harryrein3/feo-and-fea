@@ -8,7 +8,6 @@ import $ from 'jquery'
 import React from 'react'
 import ReactDOM from 'react-dom'
 import App from './App'
-import React from 'react'
 
 /*
   We will use these global variables to pass between functions.
