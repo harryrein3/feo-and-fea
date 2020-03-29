@@ -61,12 +61,6 @@ chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
 let reactApp= null
 const labelTranslation = (translation, raw_input, error) => {
   // Here we need to find the highlighted text and add a component hovering above it with the translation of the text.
-<<<<<<< HEAD
-  console.log('Got a translation', translation, raw_input)
-  const rootElement = document.createElement('div')
-  document.body.append(rootElement)
-  const reactApp = ReactDOM.render(<App/>, rootElement);
-=======
   const data = { translation, raw_input, error, visible: !reactApp }
   if (!reactApp) {
       const rootElement = document.createElement('div')
@@ -77,7 +71,6 @@ const labelTranslation = (translation, raw_input, error) => {
   } else {
     reactApp.setData(data)
   }
->>>>>>> On page v1
 }
 
 $(document).ready(function(){
