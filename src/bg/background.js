@@ -14,7 +14,7 @@ import spanishBasset32 from '../../images/icons/spanishBasset@32.png'
 import spanishBasset48 from '../../images/icons/spanishBasset@48.png'
 import spanishBasset128 from '../../images/icons/spanishBasset@128.png'
 
-const GOOGLE_TRANSLATE_TOKEN = 'ya29.c.Ko8BxAelLtUjTlzrclN5xU-ri2OJNtAWai3namj2SKyvuIw37K520lmP34xqVxcepJllCVJXT2K518hjs8FIaFsBwUOSjz2M7bI0TE9B3GG5oJsw9XkHfI4gAkXh5lxYPpsZ3rALcGJ5DRyGOLdGgA6FjNo96376CncWATXF_RMDAkBiwlbHG8bJg2pSoGOLHJk'
+const GOOGLE_TRANSLATE_TOKEN = 'ya29.c.Ko8BxQc0SwtOnsz77HG_-j4yh-29W6ljbkQiWI9Vck_KJch1cU1ImERvvdcv_U20Tr_QvyB-OHkx1eyLtiQmX65qicWzS5LiFDKEfPQqdHXuz__TebHI2UMbcFYudiK_gARO7qBQNK-rzATAgxIB6ppuPZP6uYQ8r-pk-C2pjR21IzdOqgNijd4AkFcmUBP9sNE'
 
 let isSpanish = false
 chrome.browserAction.onClicked.addListener((tab) => { 
