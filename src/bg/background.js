@@ -48,9 +48,45 @@ chrome.runtime.onMessage.addListener(async (request, sender, sendResponse) => {
           target: isSpanish ? 'es' : 'en',
           format: 'text'
         }),
-        success: data => {
-          const result = _.get(data, ['data', 'translations', 0, 'translatedText']) 
+        success: async data => {
+          let result = _.get(data, ['data', 'translations', 0, 'translatedText']) 
           console.log('Translation complete2!', result)
+
+          if (result === selection) {
+            console.log('We may be in the wrong language, lets check.')
+            const otherResult = await Promise((resolve, reject) => {
+              $.ajax({
+                url: 'https://translation.googleapis.com/language/translate/v2',
+                headers: {
+                  'Authorization': `Bearer ${GOOGLE_TRANSLATE_TOKEN}`,
+                  'Content-Type': 'application/json'
+                },
+                method: 'POST',
+                data: JSON.stringify({
+                  q: selection,
+                  source: !isSpanish ? 'en' : 'es', // opposite of above
+                  target: !isSpanish ? 'es' : 'en', // opposite of above
+                  format: 'text'
+                }),
+                success: secondDate => {
+                   const result = _.get(data, ['secondDate', 'translations', 0, 'translatedText']) 
+                   resolve(result)
+                },
+                error: data => {
+                    resolve(selection)
+                }
+              })
+            })
+
+            if (otherResult !== selection) {
+              console.log('We are in the wrong language! Reverse them');
+              isSpanish = !isSpanish
+              result = otherResult
+            }
+          }
+
+
+
           chrome.tabs.getSelected(tab => { // deprecated, eventually remove
             chrome.tabs.sendMessage(tab.id, {
               type: 'TRANSLATION_COMPLETE',
